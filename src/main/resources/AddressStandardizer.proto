@@ -1,0 +1,250 @@
+syntax = "proto3";
+
+option java_package = "com.equifax.fabric.dataprep.geocoder";
+option java_multiple_files = true;
+
+/* Request represents a client query containing an address string to be geocoded */
+message Request {
+  string address = 1;
+  string correlationId = 2;
+}
+
+message TransTasmanResponse {
+  message TransTasmanResponseOutputFields {
+  string nzMALID = 1;
+  string city = 2;
+  string postcode = 3;
+  string suburb = 4;
+  string streetName = 5;
+  string streetType = 6;
+  string streetSuffix = 7;
+  string postalType = 8;
+  string addressId = 9;
+  string houseNo1 = 10;
+  string houseSuffix1 = 11;
+  string houseNo2 = 12;
+  string houseSuffix2 = 13;
+  string flatType = 14;
+  string flatNo = 15;
+  string levelType = 16;
+  string levelNo = 17;
+  string buildingName1 = 18;
+  string buildingName2 = 19;
+  string lotNo = 20;
+  string postalNo = 21;
+  string postalPrefix = 22;
+  string postalSuffix = 23;
+  string flag = 24;
+  string flagString = 25;
+  string preAddress1 = 26;
+  string preAddress2 = 27;
+  string address1 = 28;
+  string address2 = 29;
+  string address3 = 30;
+  string postAddress = 31;
+  string amendedFlag = 32;
+  string rdNumber = 33;
+  string validFlag = 34;
+  string validFlagCorrected = 35;
+  string gifFlags = 36;
+  string latitude = 37;
+  string longitude = 38;
+  string reliability = 39;
+  string dpid = 40;
+  string mailDeliverable = 41;
+  string oldPostcode = 42;
+  string sadid = 43;
+  string mb06 = 44;
+  string mb13 = 45;
+  string areaUnit = 46;
+  string wardDesc = 47;
+  string tacode = 48;
+  string ta = 49;
+  string regionCode = 50;
+  string region = 51;
+  string urbanRural = 52;
+  string retirementLocation = 53;
+  string parID = 54;
+  string mb18 = 55;
+  string ta2009 = 56;
+  string areaUnitCode = 57;
+  string helixPersonaCode = 58;
+  string landscapePersonaCode = 59;
+  string addressType = 60;
+  string postalAddressLine1 = 61;
+  string postalAddressLine2 = 62;
+  string postalAddressLine3 = 63;
+  string postalTown = 64;
+  string postalPostcode = 65;
+  string arfSource = 66;
+  string sa1 = 67;
+  string sa2 = 68;
+  string cnarid = 69;
+  string cd = 70;
+  string mb = 71;
+  string malid =72;
+  string elid = 73;
+  string countryCode = 74;
+  string country = 75;
+  string liNZAddressId = 76;
+}
+  TransTasmanResponseOutputFields OutputFields = 1;
+  string correlationId = 2;
+}
+
+/* AUResponse represents the geocoded output of the AU geocoder */
+message AUResponse {
+  message AUResponseOutputFields {
+    string state = 1;
+    string postCode = 2;
+    string locality = 3;
+    string streetName = 4;
+    string streetType = 5;
+    string streetSuffix = 6;
+    string postalType = 7;
+    string addressId = 8;
+    string houseNo1 = 9;
+    string houseSuffix1 = 10;
+    string houseNo2 = 11;
+    string houseSuffix2 = 12;
+    string flatType = 13;
+    string flatNo = 14;
+    string levelType = 15;
+    string levelNo = 16;
+    string buildingName1 = 17;
+    string buildingName2 = 18;
+    string lotNo = 19;
+    string postalNo = 20;
+    string postalPrefix = 21;
+    string postalSuffix = 22;
+    string flag = 23;
+    string flagString = 24;
+    string preAddress1 = 25;
+    string preAddress2 = 26;
+    string address1 = 27;
+    string address2 = 28;
+    string address3 = 29;
+    string postAddress = 30;
+    string amendedFlag = 31;
+    string gifFlags = 32;
+    string latitude = 33;
+    string longitude = 34;
+    string reliability = 35;
+    string cd = 36;
+    string mb = 37;
+    string sa1 = 38;
+    string malid = 39;
+    string elid = 40;
+  }
+  AUResponseOutputFields OutputFields = 1;
+  string correlationId = 2;
+}
+
+/* NZResponse represents the output of the NZ geocoder, which can take on
+* one of two known schemas: a successful response or an error response.
+* In either case, the response is returned to the client. */
+message NZResponse {
+  oneof status {
+    NZResponseOutputFields response = 1;
+    NZResponseError error = 2;
+  }
+  string correlationId = 3;
+}
+
+/* Schema for the NZ geocoder's success response. */
+message NZResponseOutputFields {
+  string nzMALID = 1;
+  string city = 2;
+  string postcode = 3;
+  string suburb = 4;
+  string streetName = 5;
+  string streetType = 6;
+  string streetSuffix = 7;
+  string postalType = 8;
+  string addressId = 9;
+  string houseNo1 = 10;
+  string houseSuffix1 = 11;
+  string houseNo2 = 12;
+  string houseSuffix2 = 13;
+  string flatType = 14;
+  string flatNo = 15;
+  string levelType = 16;
+  string levelNo = 17;
+  string buildingName1 = 18;
+  string buildingName2 = 19;
+  string lotNo = 20;
+  string postalNo = 21;
+  string postalPrefix = 22;
+  string postalSuffix = 23;
+  string flag = 24;
+  string flagString = 25;
+  string preAddress1 = 26;
+  string preAddress2 = 27;
+  string address1 = 28;
+  string address2 = 29;
+  string address3 = 30;
+  string postAddress = 31;
+  string amendedFlag = 32;
+  string rdNumber = 33;
+  string validFlag = 34;
+  string validFlagCorrected = 35;
+  string gifFlags = 36;
+  string latitude = 37;
+  string longitude = 38;
+  string reliability = 39;
+  string dpid = 40;
+  string mailDeliverable = 41;
+  string oldPostcode = 42;
+  string sadid = 43;
+  string mb06 = 44;
+  string mb13 = 45;
+  string areaUnit = 46;
+  string wardDesc = 47;
+  string tacode = 48;
+  string ta = 49;
+  string regionCode = 50;
+  string region = 51;
+  string urbanRural = 52;
+  string retirementLocation = 53;
+  string parID = 54;
+  string mb18 = 55;
+  string ta2009 = 56;
+  string areaUnitCode = 57;
+  string helixPersonaCode = 58;
+  string landscapePersonaCode = 59;
+  string addressType = 60;
+  string postalAddressLine1 = 61;
+  string postalAddressLine2 = 62;
+  string postalAddressLine3 = 63;
+  string postalTown = 64;
+  string postalPostcode = 65;
+  string arfSource = 66;
+  string sa1 = 67;
+  string sa2 = 68;
+  string cnarid = 69;
+}
+
+/* Schema for the NZ geocoder's error response. */
+message NZResponseError {
+  string timestamp = 1;
+  string status = 2;
+  string error = 3;
+  string message = 4;
+  string path = 5;
+}
+
+/* The AU service and client stub for using the geocoder */
+service AUAddressStandardizer {
+  rpc getAddress (Request) returns (AUResponse);
+}
+
+/* The NZ service and client stub for using the geocoder */
+service NZAddressStandardizer {
+  rpc getAddress (Request) returns (NZResponse);
+}
+
+/* The NZ service and client stub for using the geocoder */
+service TransTasmanAddressStandardizer {
+  rpc getTransTasmanAddress (Request) returns (TransTasmanResponse);
+}
+
